@@ -22,5 +22,17 @@ after_success:
   - docker push iammanoj94/multi-server
   - docker push iammanoj94/multi-worker
 
+deploy:
+  provider: elasticbeanstalk
+  region: 'ap-south-1'
+  app: 'multi-docker'
+  env: 'Multidocker-env'
+  bucket_name: 'elasticbeanstalk-ap-south-1-388755081422'
+  bucket_path: 'docker-multi'
+  on:
+    branch: master
+  access_key_id: $ACCESS_KEY_ID
+  secret_access_key:
+   secure: $AWS_SECRET_KEY
   
   
